@@ -29,8 +29,8 @@ void arena_init(arena_t *a, void *buffer, size_t buffer_size) {
 void arena_init_malloc(arena_t *a, size_t size) {
   uintptr_t offset = align_addr(size, DATA_ALIGNMENT);
   byte *b = malloc(offset);
-  if (!b) return
-  arena_init(a, b, size);
+  if (b == NULL) return;
+  arena_init(a, b, offset);
 }
 
 
